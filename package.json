@@ -1,0 +1,22 @@
+{
+  "name": "array-editor",
+  "version": "1.0.0",
+  "description": "The most bad-ass array manipulation tool on the planet!",
+  "main": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "array",
+    "manipulation",
+    "manipulator",
+    "swiss-army-knife",
+    "class"
+  ],
+  "author": "Steve Thompson",
+  "license": "MIT",
+  "dependencies": {
+    "@writetome51/object-factory": "latest",
+    "@writetome51/open-array": "latest"
+  }
+}
