@@ -1,8 +1,8 @@
+import { ObjectFactory } from '@writetome51/object-factory/ObjectFactory';
 import { ClosedArrayContent } from './ClosedArrayContent';
 import { ClosedArrayItemGetter } from './ClosedArrayItemGetter';
 import { ClosedArrayContainer } from './ClosedArrayContainer';
 import { ClosedArrayGetterConverter } from './ClosedArrayGetterConverter';
-import { ObjectFactory } from '@writetome51/object-factory/ObjectFactory';
 import { ClosedArrayItemGetterRemover } from './ClosedArrayItemGetterRemover';
 
 

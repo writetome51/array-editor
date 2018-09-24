@@ -1,36 +1,15 @@
-import { ObjectFactory } from '../../../ObjectFactory/ObjectFactory';
-import { OpenArrayFilter } from '../../OpenDataContainer/OpenArrayContainer/OpenArrayFilter';
-import { ClosedArrayContainer } from './ClosedArrayContainer';
-import { getUninheritedPublicMethods } from 'datatype-handlers/objects/object_manipulation';
+import { ObjectFactory } from '@writetome51/object-factory/ObjectFactory';
+import { OpenArrayFilter } from '@writetome51/open-array/OpenArrayFilter';
+import { MethodChainableClosedArray } from './MethodChainableClosedArray';
 
 
-export class ClosedArrayFilter extends ClosedArrayContainer {
+export class ClosedArrayFilter extends MethodChainableClosedArray {
 
 	constructor(
 		protected _array: OpenArrayFilter, // injected dependency
 		input = []
 	) {
-
 		super(_array, input);
-
-		// Create methods identical to those belonging to this._array:
-		let uninheritedPublicMethods = getUninheritedPublicMethods(this._array);
-
-		// These functions modify the array, and return the class instance.
-		this._createGetterAndOrSetterForEach(
-			uninheritedPublicMethods,
-			{
-				get_getterFunction: (property) => {
-					return () => {
-						return (...params) => {
-							this._array[property](...params);
-							return this;
-						};
-					};
-				}
-			}
-		);
-
 	}
 
 

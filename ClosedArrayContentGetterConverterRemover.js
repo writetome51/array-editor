@@ -13,11 +13,11 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
+var ObjectFactory_1 = require("@writetome51/object-factory/ObjectFactory");
 var ClosedArrayContent_1 = require("./ClosedArrayContent");
 var ClosedArrayItemGetter_1 = require("./ClosedArrayItemGetter");
 var ClosedArrayContainer_1 = require("./ClosedArrayContainer");
 var ClosedArrayGetterConverter_1 = require("./ClosedArrayGetterConverter");
-var ObjectFactory_1 = require("@writetome51/object-factory/ObjectFactory");
 var ClosedArrayItemGetterRemover_1 = require("./ClosedArrayItemGetterRemover");
 /**********
 This class has these properties:

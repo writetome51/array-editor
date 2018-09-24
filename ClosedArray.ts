@@ -11,7 +11,8 @@ export abstract class ClosedArray extends ClosedArrayContainer {
 		protected _array: OpenArrayContainer, // must be subclass of it.
 
 		input = [],
-		get_getterFunctionForMethods: Function
+
+		get_getterFunctionForMethods: Function // must return getter function
 	) {
 		super(_array, input);
 
@@ -29,6 +30,7 @@ export abstract class ClosedArray extends ClosedArrayContainer {
 		);
 
 		// Create methods identical to those belonging to this._array:
+
 		let uninheritedPublicMethods = getUninheritedPublicMethods(this._array);
 
 		this._createGetterAndOrSetterForEach(

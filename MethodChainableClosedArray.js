@@ -20,6 +20,7 @@ var MethodChainableClosedArray = /** @class */ (function (_super) {
     input) {
         if (input === void 0) { input = []; }
         var _this = _super.call(this, _array, input, function (property) {
+            // Return a getter function:
             return function () {
                 // Return a function, turning the property into a method:
                 return function () {

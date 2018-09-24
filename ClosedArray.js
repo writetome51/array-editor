@@ -19,7 +19,8 @@ var getUninheritiedPublicProperties_1 = require("intuitive-object-handlers/get/g
 var ClosedArray = /** @class */ (function (_super) {
     __extends(ClosedArray, _super);
     function ClosedArray(_array, // must be subclass of it.
-    input, get_getterFunctionForMethods) {
+    input, get_getterFunctionForMethods // must return getter function
+    ) {
         if (input === void 0) { input = []; }
         var _this = _super.call(this, _array, input) || this;
         _this._array = _array;
