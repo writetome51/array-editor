@@ -13,10 +13,9 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-var ObjectFactory_1 = require("../../../ObjectFactory/ObjectFactory");
-var ClosedArrayContainer_1 = require("./ClosedArrayContainer");
-var OpenArrayItemGetterRemover_1 = require("../../OpenDataContainer/OpenArrayContainer/OpenArrayItemGetterRemover");
-var object_manipulation_1 = require("datatype-handlers/objects/object_manipulation");
+var ObjectFactory_1 = require("@writetome51/object-factory/ObjectFactory");
+var OpenArrayItemGetterRemover_1 = require("@writetome51/open-array/OpenArrayItemGetterRemover");
+var NonMethodChainableClosedArray_1 = require("./NonMethodChainableClosedArray");
 var ClosedArrayItemGetterRemover = /** @class */ (function (_super) {
     __extends(ClosedArrayItemGetterRemover, _super);
     function ClosedArrayItemGetterRemover(_array, // injected dependency
@@ -24,27 +23,9 @@ var ClosedArrayItemGetterRemover = /** @class */ (function (_super) {
         if (input === void 0) { input = []; }
         var _this = _super.call(this, _array, input) || this;
         _this._array = _array;
-        // Create methods identical to those belonging to this._array:
-        var uninheritedPublicMethods = object_manipulation_1.getUninheritedPublicMethods(_this._array);
-        // These functions modify the array and return a new array or requested value.
-        _this._createGetterAndOrSetterForEach(uninheritedPublicMethods, {
-            get_getterFunction: function (property) {
-                return function () {
-                    // Return a function, turning the property into a method:
-                    return function () {
-                        var params = [];
-                        for (var _i = 0; _i < arguments.length; _i++) {
-                            params[_i] = arguments[_i];
-                        }
-                        var _a;
-                        return (_a = _this._array)[property].apply(_a, params);
-                    };
-                };
-            }
-        });
         return _this;
     }
     return ClosedArrayItemGetterRemover;
-}(ClosedArrayContainer_1.ClosedArrayContainer));
+}(NonMethodChainableClosedArray_1.NonMethodChainableClosedArray));
 exports.ClosedArrayItemGetterRemover = ClosedArrayItemGetterRemover;
 ObjectFactory_1.ObjectFactory.register({ class: ClosedArrayItemGetterRemover, dependencies: [OpenArrayItemGetterRemover_1.OpenArrayItemGetterRemover] });

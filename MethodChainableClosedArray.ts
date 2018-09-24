@@ -10,18 +10,15 @@ export abstract class MethodChainableClosedArray extends ClosedArray {
 
 		input = []
 	) {
-		super(_array, input);
-	}
-
-
-	protected _get_getterFunctionForMethods(property) {
-		return () => {
-			// Return a function, turning the property into a method:
-			return (...params) => {
-				this._array[property](...params);
-				return this;
+		super(_array, input, (property) => {
+			return () => {
+				// Return a function, turning the property into a method:
+				return (...params) => {
+					this._array[property](...params);
+					return this;
+				};
 			};
-		};
+		});
 	}
 
 

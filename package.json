@@ -18,6 +18,7 @@
   "dependencies": {
     "@writetome51/object-factory": "latest",
     "@writetome51/open-array": "latest",
+    "method-generator": "latest",
     "open-data-container": "latest",
     "closed-data-container": "latest",
     "batch-getter-setter": "latest",

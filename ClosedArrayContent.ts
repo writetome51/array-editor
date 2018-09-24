@@ -1,11 +1,11 @@
-import { ClosedArrayContainer } from './ClosedArrayContainer';
 import { OpenArrayContent } from '@writetome51/open-array/OpenArrayContent';
 import { ObjectFactory } from '@writetome51/object-factory/ObjectFactory';
+import { NonMethodChainableClosedArray } from './NonMethodChainableClosedArray';
 
 
 // This class has the same properties and methods defined inside OpenArrayContent.
 
-export class ClosedArrayContent extends ClosedArrayContainer {
+export class ClosedArrayContent extends NonMethodChainableClosedArray {
 
 
 	constructor(
@@ -13,35 +13,7 @@ export class ClosedArrayContent extends ClosedArrayContainer {
 
 		input = []
 	) {
-
 		super(_array, input);
-
-		// Create properties identical to those belonging to OpenArrayContent:
-		this._createGetterAndOrSetterForEach(['length', 'isEmpty', 'notEmpty'],
-			{
-				get_getterFunction: (property) => {
-					return () => {
-						return this._array[property];
-					};
-				}
-			}
-		);
-
-		// Create methods identical to those belonging to OpenArrayContent:
-		this._createGetterAndOrSetterForEach(
-			['has', 'hasAll', 'hasAny', 'matches', 'firstIndexOf', 'lastIndexOf',
-				'indexesOf', 'allPass', 'anyPass'],
-			{
-				get_getterFunction: (property) => {
-					return () => {
-						return (...params) => {
-							return this._array[property](...params);
-						};
-					};
-				}
-			}
-		);
-
 	}
 
 

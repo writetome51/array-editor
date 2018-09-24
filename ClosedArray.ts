@@ -10,7 +10,8 @@ export abstract class ClosedArray extends ClosedArrayContainer {
 	constructor(
 		protected _array: OpenArrayContainer, // must be subclass of it.
 
-		input = []
+		input = [],
+		get_getterFunctionForMethods: Function
 	) {
 		super(_array, input);
 
@@ -33,15 +34,10 @@ export abstract class ClosedArray extends ClosedArrayContainer {
 		this._createGetterAndOrSetterForEach(
 			uninheritedPublicMethods,
 			{
-				get_getterFunction: this._get_getterFunctionForMethods
+				get_getterFunction: get_getterFunctionForMethods
 			}
 		);
 
-	}
-
-
-	protected _get_getterFunctionForMethods(property: string): Function {
-		throw new Error('This function must be overridden in a subclass');
 	}
 
 

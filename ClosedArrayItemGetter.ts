@@ -1,13 +1,9 @@
-import { OpenArrayItemGetter }
-	from '../../OpenDataContainer/OpenArrayContainer/OpenArrayItemGetter';
-import { ClosedArrayContainer } from './ClosedArrayContainer';
-import { ObjectFactory } from '../../../ObjectFactory/ObjectFactory';
-import { getUninheritedPublicMethods }
-	from 'datatype-handlers/objects/object_manipulation';
+import { OpenArrayItemGetter } from '@writetome51/open-array/OpenArrayItemGetter';
+import { ObjectFactory } from '@writetome51/object-factory/ObjectFactory';
+import { NonMethodChainableClosedArray } from './NonMethodChainableClosedArray';
 
 
-export class ClosedArrayItemGetter extends ClosedArrayContainer {
-
+export class ClosedArrayItemGetter extends NonMethodChainableClosedArray {
 
 	constructor(
 		protected _array: OpenArrayItemGetter, // injected dependency
@@ -15,28 +11,6 @@ export class ClosedArrayItemGetter extends ClosedArrayContainer {
 		input = []
 	) {
 		super(_array, input);
-
-		// Create methods identical to those belonging to this._array:
-		let uninheritedPublicMethods = getUninheritedPublicMethods(this._array);
-
-		// These methods don't modify the array.  They return a new array or requested
-		// value.
-
-		this._createGetterAndOrSetterForEach(
-			uninheritedPublicMethods,
-			{
-				get_getterFunction: (property) => {
-					return () => {
-						// Return a function, turning the property into a method:
-						return (...params) => {
-							return this._array[property](...params);
-						};
-					};
-				}
-
-			}
-		);
-
 	}
 
 

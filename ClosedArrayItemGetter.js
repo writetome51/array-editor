@@ -13,10 +13,9 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-var OpenArrayItemGetter_1 = require("../../OpenDataContainer/OpenArrayContainer/OpenArrayItemGetter");
-var ClosedArrayContainer_1 = require("./ClosedArrayContainer");
-var ObjectFactory_1 = require("../../../ObjectFactory/ObjectFactory");
-var object_manipulation_1 = require("datatype-handlers/objects/object_manipulation");
+var OpenArrayItemGetter_1 = require("@writetome51/open-array/OpenArrayItemGetter");
+var ObjectFactory_1 = require("@writetome51/object-factory/ObjectFactory");
+var NonMethodChainableClosedArray_1 = require("./NonMethodChainableClosedArray");
 var ClosedArrayItemGetter = /** @class */ (function (_super) {
     __extends(ClosedArrayItemGetter, _super);
     function ClosedArrayItemGetter(_array, // injected dependency
@@ -24,28 +23,9 @@ var ClosedArrayItemGetter = /** @class */ (function (_super) {
         if (input === void 0) { input = []; }
         var _this = _super.call(this, _array, input) || this;
         _this._array = _array;
-        // Create methods identical to those belonging to this._array:
-        var uninheritedPublicMethods = object_manipulation_1.getUninheritedPublicMethods(_this._array);
-        // These methods don't modify the array.  They return a new array or requested
-        // value.
-        _this._createGetterAndOrSetterForEach(uninheritedPublicMethods, {
-            get_getterFunction: function (property) {
-                return function () {
-                    // Return a function, turning the property into a method:
-                    return function () {
-                        var params = [];
-                        for (var _i = 0; _i < arguments.length; _i++) {
-                            params[_i] = arguments[_i];
-                        }
-                        var _a;
-                        return (_a = _this._array)[property].apply(_a, params);
-                    };
-                };
-            }
-        });
         return _this;
     }
     return ClosedArrayItemGetter;
-}(ClosedArrayContainer_1.ClosedArrayContainer));
+}(NonMethodChainableClosedArray_1.NonMethodChainableClosedArray));
 exports.ClosedArrayItemGetter = ClosedArrayItemGetter;
 ObjectFactory_1.ObjectFactory.register({ class: ClosedArrayItemGetter, dependencies: [OpenArrayItemGetter_1.OpenArrayItemGetter] });

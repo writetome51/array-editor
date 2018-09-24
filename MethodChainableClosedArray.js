@@ -19,25 +19,23 @@ var MethodChainableClosedArray = /** @class */ (function (_super) {
     function MethodChainableClosedArray(_array, // must be subclass of it.
     input) {
         if (input === void 0) { input = []; }
-        var _this = _super.call(this, _array, input) || this;
+        var _this = _super.call(this, _array, input, function (property) {
+            return function () {
+                // Return a function, turning the property into a method:
+                return function () {
+                    var params = [];
+                    for (var _i = 0; _i < arguments.length; _i++) {
+                        params[_i] = arguments[_i];
+                    }
+                    var _a;
+                    (_a = _this._array)[property].apply(_a, params);
+                    return _this;
+                };
+            };
+        }) || this;
         _this._array = _array;
         return _this;
     }
-    MethodChainableClosedArray.prototype._get_getterFunctionForMethods = function (property) {
-        var _this = this;
-        return function () {
-            // Return a function, turning the property into a method:
-            return function () {
-                var params = [];
-                for (var _i = 0; _i < arguments.length; _i++) {
-                    params[_i] = arguments[_i];
-                }
-                var _a;
-                (_a = _this._array)[property].apply(_a, params);
-                return _this;
-            };
-        };
-    };
     return MethodChainableClosedArray;
 }(ClosedArray_1.ClosedArray));
 exports.MethodChainableClosedArray = MethodChainableClosedArray;

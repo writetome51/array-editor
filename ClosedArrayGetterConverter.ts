@@ -1,12 +1,9 @@
-import { ClosedArrayContainer } from './ClosedArrayContainer';
-import { OpenArrayGetterConverter }
-	from '../../OpenDataContainer/OpenArrayContainer/OpenArrayGetterConverter';
-import { ObjectFactory } from '../../../ObjectFactory/ObjectFactory';
-import { getUninheritedPublicMethods }
-	from 'datatype-handlers/objects/object_manipulation';
+import { OpenArrayGetterConverter } from '@writetome51/open-array/OpenArrayGetterConverter';
+import { ObjectFactory } from '@writetome51/object-factory/ObjectFactory';
+import { NonMethodChainableClosedArray } from './NonMethodChainableClosedArray';
 
 
-export class ClosedArrayGetterConverter extends ClosedArrayContainer {
+export class ClosedArrayGetterConverter extends NonMethodChainableClosedArray {
 
 
 	constructor(
@@ -15,24 +12,6 @@ export class ClosedArrayGetterConverter extends ClosedArrayContainer {
 		array = []
 	) {
 		super(_array, array);
-
-		// Create methods identical to those belonging to this._array:
-		let uninheritedPublicMethods = getUninheritedPublicMethods(this._array);
-
-		// Create methods identical to those belonging to OpenArrayGetterConverter:
-		this._createGetterAndOrSetterForEach(
-			uninheritedPublicMethods,
-			{
-				get_getterFunction: (property) => {
-					return () => {
-						return (...params) => {
-							return this._array[property](...params);
-						};
-					};
-				}
-			}
-		);
-
 	}
 
 

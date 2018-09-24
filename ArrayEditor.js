@@ -25,8 +25,8 @@ var ClosedArrayGetterConverter_1 = require("./ClosedArrayGetterConverter");
 var ClosedArrayAppender_1 = require("./ClosedArrayAppender");
 var ClosedArrayPrepender_1 = require("./ClosedArrayPrepender");
 var ClosedArrayItemGetterRemover_1 = require("./ClosedArrayItemGetterRemover");
-var MethodGenerator_1 = require("../../../MethodGenerator");
-var ObjectFactory_1 = require("../../../ObjectFactory/ObjectFactory");
+var MethodGenerator_1 = require("method-generator/MethodGenerator");
+var ObjectFactory_1 = require("@writetome51/object-factory/ObjectFactory");
 /***********
  Behold... ArrayEditor.
  ArrayEditor combines all the other ClosedArrayContainer classes into one powerful,
@@ -37,8 +37,7 @@ var ObjectFactory_1 = require("../../../ObjectFactory/ObjectFactory");
  Every method generated for this class returns the class instance.  So they are all
  chainable, i.e, you can write something like:
 
- this.remove_allOf('word').insert_multiple(['jelly','donut'], 2)
- .append_single('frosting').export();
+ this.remove_allOf('nuts').insert_multiple(['jelly','donut'], 2).append_single('frosting').export();
 
  ************/
 var ArrayEditor = /** @class */ (function (_super) {

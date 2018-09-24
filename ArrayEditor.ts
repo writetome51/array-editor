@@ -12,7 +12,7 @@ import { ClosedArrayAppender } from './ClosedArrayAppender';
 import { ClosedArrayPrepender } from './ClosedArrayPrepender';
 import { ClosedArrayItemGetterRemover } from './ClosedArrayItemGetterRemover';
 import { MethodGenerator } from 'method-generator/MethodGenerator';
-import { ObjectFactory } from 'object-factory/ObjectFactory';
+import { ObjectFactory } from '@writetome51/object-factory/ObjectFactory';
 
 
 /***********

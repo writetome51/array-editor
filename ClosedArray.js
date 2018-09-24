@@ -19,7 +19,7 @@ var getUninheritiedPublicProperties_1 = require("intuitive-object-handlers/get/g
 var ClosedArray = /** @class */ (function (_super) {
     __extends(ClosedArray, _super);
     function ClosedArray(_array, // must be subclass of it.
-    input) {
+    input, get_getterFunctionForMethods) {
         if (input === void 0) { input = []; }
         var _this = _super.call(this, _array, input) || this;
         _this._array = _array;
@@ -35,13 +35,10 @@ var ClosedArray = /** @class */ (function (_super) {
         // Create methods identical to those belonging to this._array:
         var uninheritedPublicMethods = getUninheritedPublicMethods_1.getUninheritedPublicMethods(_this._array);
         _this._createGetterAndOrSetterForEach(uninheritedPublicMethods, {
-            get_getterFunction: _this._get_getterFunctionForMethods
+            get_getterFunction: get_getterFunctionForMethods
         });
         return _this;
     }
-    ClosedArray.prototype._get_getterFunctionForMethods = function (property) {
-        throw new Error('This function must be overridden in a subclass');
-    };
     return ClosedArray;
 }(ClosedArrayContainer_1.ClosedArrayContainer));
 exports.ClosedArray = ClosedArray;

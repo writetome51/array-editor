@@ -1,5 +1,5 @@
 import { ObjectFactory } from '../../../ObjectFactory/ObjectFactory';
-import { ArrayEditor } from './ArrayEditor';
+import { ArrayEditor } from '../ArrayEditor';
 import { getAllMethods } from '../../../../functions/data-type-handlers/objects/object_manipulation';
 
 

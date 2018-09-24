@@ -13,9 +13,9 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-var ClosedArrayContainer_1 = require("./ClosedArrayContainer");
 var OpenArrayContent_1 = require("@writetome51/open-array/OpenArrayContent");
 var ObjectFactory_1 = require("@writetome51/object-factory/ObjectFactory");
+var NonMethodChainableClosedArray_1 = require("./NonMethodChainableClosedArray");
 // This class has the same properties and methods defined inside OpenArrayContent.
 var ClosedArrayContent = /** @class */ (function (_super) {
     __extends(ClosedArrayContent, _super);
@@ -24,33 +24,9 @@ var ClosedArrayContent = /** @class */ (function (_super) {
         if (input === void 0) { input = []; }
         var _this = _super.call(this, _array, input) || this;
         _this._array = _array;
-        // Create properties identical to those belonging to OpenArrayContent:
-        _this._createGetterAndOrSetterForEach(['length', 'isEmpty', 'notEmpty'], {
-            get_getterFunction: function (property) {
-                return function () {
-                    return _this._array[property];
-                };
-            }
-        });
-        // Create methods identical to those belonging to OpenArrayContent:
-        _this._createGetterAndOrSetterForEach(['has', 'hasAll', 'hasAny', 'matches', 'firstIndexOf', 'lastIndexOf',
-            'indexesOf', 'allPass', 'anyPass'], {
-            get_getterFunction: function (property) {
-                return function () {
-                    return function () {
-                        var params = [];
-                        for (var _i = 0; _i < arguments.length; _i++) {
-                            params[_i] = arguments[_i];
-                        }
-                        var _a;
-                        return (_a = _this._array)[property].apply(_a, params);
-                    };
-                };
-            }
-        });
         return _this;
     }
     return ClosedArrayContent;
-}(ClosedArrayContainer_1.ClosedArrayContainer));
+}(NonMethodChainableClosedArray_1.NonMethodChainableClosedArray));
 exports.ClosedArrayContent = ClosedArrayContent;
 ObjectFactory_1.ObjectFactory.register({ class: ClosedArrayContent, dependencies: [OpenArrayContent_1.OpenArrayContent] });
