@@ -14,9 +14,9 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 var ClosedArrayContainer_1 = require("./ClosedArrayContainer");
-var OpenArraySorter_1 = require("../../OpenDataContainer/OpenArrayContainer/OpenArraySorter");
-var ObjectFactory_1 = require("../../../ObjectFactory/ObjectFactory");
-var object_manipulation_1 = require("datatype-handlers/objects/object_manipulation");
+var OpenArraySorter_1 = require("@writetome51/open-array/OpenArraySorter");
+var ObjectFactory_1 = require("@writetome51/object-factory/ObjectFactory");
+var getUninheritedPublicMethods_1 = require("intuitive-object-handlers/get/getUninheritedPublicMethods");
 var ClosedArraySorter = /** @class */ (function (_super) {
     __extends(ClosedArraySorter, _super);
     function ClosedArraySorter(_array, // injected dependency
@@ -25,7 +25,7 @@ var ClosedArraySorter = /** @class */ (function (_super) {
         var _this = _super.call(this, _array, input) || this;
         _this._array = _array;
         // Create methods identical to those belonging to this._array:
-        var uninheritedPublicMethods = object_manipulation_1.getUninheritedPublicMethods(_this._array);
+        var uninheritedPublicMethods = getUninheritedPublicMethods_1.getUninheritedPublicMethods(_this._array);
         // These functions modify the array, and return the class instance:
         _this._createGetterAndOrSetterForEach(uninheritedPublicMethods, {
             get_getterFunction: function (property) {

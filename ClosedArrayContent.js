@@ -14,8 +14,8 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 var ClosedArrayContainer_1 = require("./ClosedArrayContainer");
-var OpenArrayContent_1 = require("../../OpenDataContainer/OpenArrayContainer/OpenArrayContent");
-var ObjectFactory_1 = require("../../../ObjectFactory/ObjectFactory");
+var OpenArrayContent_1 = require("@writetome51/open-array/OpenArrayContent");
+var ObjectFactory_1 = require("@writetome51/object-factory/ObjectFactory");
 // This class has the same properties and methods defined inside OpenArrayContent.
 var ClosedArrayContent = /** @class */ (function (_super) {
     __extends(ClosedArrayContent, _super);

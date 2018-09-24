@@ -1,5 +1,5 @@
-import { IClosedDataContainer } from '../IClosedDataContainer';
-import { IEmptyable } from '../../../../interfaces/IEmptyable';
+import { IClosedDataContainer } from 'closed-data-container/IClosedDataContainer';
+import { IEmptyable } from 'emptyable/IEmptyable';
 
 
 export interface IClosedArrayContainer extends IClosedDataContainer<any[]>, IEmptyable{

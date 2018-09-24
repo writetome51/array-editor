@@ -1,9 +1,9 @@
 import { IClosedArrayContainer } from './IClosedArrayContainer';
-import { BaseObject } from '../../../BaseObject';
-import { IOpenDataContainer } from '../../OpenDataContainer/IOpenDataContainer';
+import { BatchGetterSetter } from 'batch-getter-setter/BatchGetterSetter';
+import {IOpenDataContainer} from 'open-data-container/IOpenDataContainer';
 
 
-export abstract class ClosedArrayContainer extends BaseObject implements IClosedArrayContainer {
+export abstract class ClosedArrayContainer extends BatchGetterSetter implements IClosedArrayContainer {
 
 	constructor(
 		protected _array: IOpenDataContainer<any[]>,

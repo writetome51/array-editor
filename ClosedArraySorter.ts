@@ -1,8 +1,8 @@
 import { ClosedArrayContainer } from './ClosedArrayContainer';
-import { OpenArraySorter }
-	from '../../OpenDataContainer/OpenArrayContainer/OpenArraySorter';
-import { ObjectFactory } from '../../../ObjectFactory/ObjectFactory';
-import { getUninheritedPublicMethods } from 'datatype-handlers/objects/object_manipulation';
+import { OpenArraySorter } from '@writetome51/open-array/OpenArraySorter';
+import { ObjectFactory } from '@writetome51/object-factory/ObjectFactory';
+import { getUninheritedPublicMethods }
+	from 'intuitive-object-handlers/get/getUninheritedPublicMethods';
 
 
 export class ClosedArraySorter extends ClosedArrayContainer {

@@ -13,7 +13,7 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-var BaseObject_1 = require("../../../BaseObject");
+var BatchGetterSetter_1 = require("batch-getter-setter/BatchGetterSetter");
 var ClosedArrayContainer = /** @class */ (function (_super) {
     __extends(ClosedArrayContainer, _super);
     function ClosedArrayContainer(_array, input) {
@@ -38,5 +38,5 @@ var ClosedArrayContainer = /** @class */ (function (_super) {
         this._array.data = array;
     };
     return ClosedArrayContainer;
-}(BaseObject_1.BaseObject));
+}(BatchGetterSetter_1.BatchGetterSetter));
 exports.ClosedArrayContainer = ClosedArrayContainer;

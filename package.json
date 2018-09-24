@@ -17,6 +17,11 @@
   "license": "MIT",
   "dependencies": {
     "@writetome51/object-factory": "latest",
-    "@writetome51/open-array": "latest"
+    "@writetome51/open-array": "latest",
+    "open-data-container": "latest",
+    "closed-data-container": "latest",
+    "batch-getter-setter": "latest",
+    "intuitive-object-handlers": "latest",
+    "emptyable": "latest"
   }
 }

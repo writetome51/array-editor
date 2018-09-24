@@ -1,6 +1,6 @@
 import { ClosedArrayContainer } from './ClosedArrayContainer';
-import { OpenArrayContent } from '../../OpenDataContainer/OpenArrayContainer/OpenArrayContent';
-import { ObjectFactory } from '../../../ObjectFactory/ObjectFactory';
+import { OpenArrayContent } from '@writetome51/open-array/OpenArrayContent';
+import { ObjectFactory } from '@writetome51/object-factory/ObjectFactory';
 
 
 // This class has the same properties and methods defined inside OpenArrayContent.
