@@ -5,13 +5,12 @@ import { NonMethodChainableClosedArray } from './NonMethodChainableClosedArray';
 
 export class ClosedArrayGetterConverter extends NonMethodChainableClosedArray {
 
-
 	constructor(
 		protected _array: OpenArrayGetterConverter, // injected dependency
 
-		array = []
+		input = []
 	) {
-		super(_array, array);
+		super(_array, input);
 	}
 
 

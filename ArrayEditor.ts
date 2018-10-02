@@ -8,8 +8,6 @@ import { ClosedArrayItemGetter } from './ClosedArrayItemGetter';
 import { ClosedArrayContent } from './ClosedArrayContent';
 import { ClosedArrayItemRemover } from './ClosedArrayItemRemover';
 import { ClosedArrayGetterConverter } from './ClosedArrayGetterConverter';
-import { ClosedArrayAppender } from './ClosedArrayAppender';
-import { ClosedArrayPrepender } from './ClosedArrayPrepender';
 import { ClosedArrayItemGetterRemover } from './ClosedArrayItemGetterRemover';
 import { MethodGenerator } from 'method-generator/MethodGenerator';
 import { ObjectFactory } from '@writetome51/object-factory/ObjectFactory';
@@ -35,7 +33,7 @@ export class ArrayEditor extends ClosedArrayContentGetterConverterRemover {
 	// These properties are intended to be private, hence the underscores. You're only
 	// intended to access the methods generated for them.
 	protected _propertiesToGenerateMethodsFor = [
-		'_remove', '_replace', '_insert', '_sort', '_filter', '_append', '_prepend'
+		'_remove', '_replace', '_insert', '_sort', '_filter'
 	];
 
 
@@ -50,8 +48,6 @@ export class ArrayEditor extends ClosedArrayContentGetterConverterRemover {
 		private __insert: ClosedArrayItemInserter,
 		private __sort: ClosedArraySorter,
 		private __filter: ClosedArrayFilter,
-		private __append: ClosedArrayAppender,
-		private __prepend: ClosedArrayPrepender,
 		methodGenerator: MethodGenerator,
 		// ... end injected dependencies
 
@@ -78,6 +74,12 @@ export class ArrayEditor extends ClosedArrayContentGetterConverterRemover {
 	}
 
 
+	get append(){}
+
+
+	get prepend(){}
+
+
 	// The method called inside each method created by methodGenerator:
 	private _doAction_updateData_and_returnThis(obj: IClosedArrayContainer, action, actionArgs) {
 		return this.runMethod_and_returnThis(obj, action, actionArgs, () => {
@@ -96,8 +98,7 @@ ObjectFactory.register(
 		dependencies: [
 			ClosedArrayContent, ClosedArrayItemGetter, ClosedArrayGetterConverter,
 			ClosedArrayItemGetterRemover, ClosedArrayItemRemover, ClosedArrayItemReplacer,
-			ClosedArrayItemInserter, ClosedArraySorter, ClosedArrayFilter,
-			ClosedArrayAppender, ClosedArrayPrepender, MethodGenerator
+			ClosedArrayItemInserter, ClosedArraySorter, ClosedArrayFilter, MethodGenerator
 		]
 	}
 );

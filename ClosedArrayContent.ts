@@ -7,7 +7,6 @@ import { NonMethodChainableClosedArray } from './NonMethodChainableClosedArray';
 
 export class ClosedArrayContent extends NonMethodChainableClosedArray {
 
-
 	constructor(
 		protected _array: OpenArrayContent, // injected dependency
 

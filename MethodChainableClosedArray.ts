@@ -1,4 +1,4 @@
-import { OpenArrayContainer } from '@writetome51/open-array/OpenArrayContainer';
+import { OpenArrayContainer } from '@writetome51/open-array-container/OpenArrayContainer';
 import { ClosedArray } from './ClosedArray';
 
 

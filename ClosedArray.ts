@@ -1,7 +1,7 @@
 import { ClosedArrayContainer } from './ClosedArrayContainer';
 import { getUninheritedPublicMethods } from 'intuitive-object-handlers/get/getUninheritedPublicMethods';
 import { getUninheritedPublicProperties } from 'intuitive-object-handlers/get/getUninheritiedPublicProperties';
-import { OpenArrayContainer } from '@writetome51/open-array/OpenArrayContainer';
+import { OpenArrayContainer } from '@writetome51/open-array-container/OpenArrayContainer';
 
 
 export abstract class ClosedArray extends ClosedArrayContainer {

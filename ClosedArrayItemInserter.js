@@ -28,7 +28,4 @@ var ClosedArrayItemInserter = /** @class */ (function (_super) {
     return ClosedArrayItemInserter;
 }(MethodChainableClosedArray_1.MethodChainableClosedArray));
 exports.ClosedArrayItemInserter = ClosedArrayItemInserter;
-ObjectFactory_1.ObjectFactory.register({
-    class: ClosedArrayItemInserter,
-    dependencies: [OpenArrayItemInserter_1.OpenArrayItemInserter]
-});
+ObjectFactory_1.ObjectFactory.register({ class: ClosedArrayItemInserter, dependencies: [OpenArrayItemInserter_1.OpenArrayItemInserter] });

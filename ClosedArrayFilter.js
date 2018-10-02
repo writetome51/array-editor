@@ -14,16 +14,14 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 var ObjectFactory_1 = require("@writetome51/object-factory/ObjectFactory");
-var OpenArrayFilter_1 = require("@writetome51/open-array/OpenArrayFilter");
+var OpenArrayFilter_1 = require("@writetome51/open-array-filter/OpenArrayFilter");
 var MethodChainableClosedArray_1 = require("./MethodChainableClosedArray");
 var ClosedArrayFilter = /** @class */ (function (_super) {
     __extends(ClosedArrayFilter, _super);
     function ClosedArrayFilter(_array, // injected dependency
     input) {
         if (input === void 0) { input = []; }
-        var _this = _super.call(this, _array, input) || this;
-        _this._array = _array;
-        return _this;
+        return _super.call(this, _array, input) || this;
     }
     return ClosedArrayFilter;
 }(MethodChainableClosedArray_1.MethodChainableClosedArray));

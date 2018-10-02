@@ -5,7 +5,6 @@ import { MethodChainableClosedArray } from './MethodChainableClosedArray';
 
 export class ClosedArraySorter extends MethodChainableClosedArray {
 
-
 	constructor(
 		protected _array: OpenArraySorter, // injected dependency
 

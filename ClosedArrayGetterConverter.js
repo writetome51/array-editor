@@ -19,9 +19,9 @@ var NonMethodChainableClosedArray_1 = require("./NonMethodChainableClosedArray")
 var ClosedArrayGetterConverter = /** @class */ (function (_super) {
     __extends(ClosedArrayGetterConverter, _super);
     function ClosedArrayGetterConverter(_array, // injected dependency
-    array) {
-        if (array === void 0) { array = []; }
-        var _this = _super.call(this, _array, array) || this;
+    input) {
+        if (input === void 0) { input = []; }
+        var _this = _super.call(this, _array, input) || this;
         _this._array = _array;
         return _this;
     }

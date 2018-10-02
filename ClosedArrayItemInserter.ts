@@ -8,6 +8,7 @@ export class ClosedArrayItemInserter extends MethodChainableClosedArray {
 
 	constructor(
 		protected _array: OpenArrayItemInserter, // injected dependency,
+
 		input = []
 	) {
 		super(_array, input);
@@ -17,7 +18,6 @@ export class ClosedArrayItemInserter extends MethodChainableClosedArray {
 }
 
 
-ObjectFactory.register({
-	class: ClosedArrayItemInserter,
-	dependencies: [OpenArrayItemInserter]
-});
+ObjectFactory.register(
+	{class: ClosedArrayItemInserter, dependencies: [OpenArrayItemInserter]}
+);

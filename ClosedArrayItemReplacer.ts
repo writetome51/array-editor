@@ -7,6 +7,7 @@ export class ClosedArrayItemReplacer extends MethodChainableClosedArray {
 
 	constructor(
 		protected _array: OpenArrayItemReplacer, // injected dependency
+
 		input = []
 	) {
 		super(_array, input);
