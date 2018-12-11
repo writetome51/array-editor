@@ -1,21 +1,21 @@
-import { IClosedArrayContainer } from './IClosedArrayContainer';
-import { ClosedArraySorter } from './ClosedArraySorter';
-import { ClosedArrayItemInserter } from './ClosedArrayItemInserter';
-import { ClosedArrayItemReplacer } from './ClosedArrayItemReplacer';
-import { ClosedArrayFilter } from './ClosedArrayFilter';
-import { ClosedArrayContentGetterConverterRemover } from './ClosedArrayContentGetterConverterRemover';
-import { ClosedArrayItemGetter } from './ClosedArrayItemGetter';
-import { ClosedArrayContent } from './ClosedArrayContent';
-import { ClosedArrayItemRemover } from './ClosedArrayItemRemover';
-import { ClosedArrayGetterConverter } from './ClosedArrayGetterConverter';
-import { ClosedArrayItemGetterRemover } from './ClosedArrayItemGetterRemover';
+import { IPrivateArrayContainer } from './privy/IPrivateArrayContainer';
+import { PrivateArraySorter } from './privy/PrivateArraySorter';
+import { PrivateArrayInserter } from './privy/PrivateArrayInserter';
+import { PrivateArrayReplacer } from './privy/PrivateArrayReplacer';
+import { PrivateArrayFilter } from './privy/PrivateArrayFilter';
+import { PrivateArrayContentGetterConverterRemover } from './privy/PrivateArrayContentGetterConverterRemover';
+import { PrivateArrayGetter } from './privy/PrivateArrayGetter';
+import { PrivateArrayContent } from './privy/PrivateArrayContent';
+import { PrivateArrayRemover } from './privy/PrivateArrayRemover';
+import { PrivateArrayGetterConverter } from './privy/PrivateArrayGetterConverter';
+import { PrivateArrayGetterRemover } from './privy/PrivateArrayGetterRemover';
 import { MethodGenerator } from 'method-generator/MethodGenerator';
 import { ObjectFactory } from '@writetome51/object-factory/ObjectFactory';
 
 
 /***********
  Behold... ArrayEditor.
- ArrayEditor combines all the other ClosedArrayContainer classes into one powerful,
+ ArrayEditor combines all the other PrivateArrayContainer classes into one powerful,
  versatile class.  This class contains methods that are defined during runtime using
  MethodGenerator.  So when you're calling these methods, a linting tool like TSLint
  will tell you these methods don't exist.  In this case, ignore TSLint.
@@ -23,12 +23,12 @@ import { ObjectFactory } from '@writetome51/object-factory/ObjectFactory';
  Every method generated for this class returns the class instance.  So they are all
  chainable, i.e, you can write something like:
 
- this.remove_allOf('nuts').insert_multiple(['jelly','donut'], 2).append_single('frosting').export();
+ this.remove_allOf('nuts').insert_at(2, ['jelly', 'donut']).append(['frosting']).export();
 
  ************/
 
 
-export class ArrayEditor extends ClosedArrayContentGetterConverterRemover {
+export class ArrayEditor extends PrivateArrayContentGetterConverterRemover {
 
 	// These properties are intended to be private, hence the underscores. You're only
 	// intended to access the methods generated for them.
@@ -39,15 +39,15 @@ export class ArrayEditor extends ClosedArrayContentGetterConverterRemover {
 
 	constructor(
 		// begin injected dependencies...
-		content: ClosedArrayContent, // this.content
-		get: ClosedArrayItemGetter, // this.get
-		getConverted: ClosedArrayGetterConverter, // this.getConverted
-		getAndRemove: ClosedArrayItemGetterRemover, // this.getAndRemove
-		private __remove: ClosedArrayItemRemover,
-		private __replace: ClosedArrayItemReplacer,
-		private __insert: ClosedArrayItemInserter,
-		private __sort: ClosedArraySorter,
-		private __filter: ClosedArrayFilter,
+		content: PrivateArrayContent, // this.content
+		get: PrivateArrayGetter, // this.get
+		getConverted: PrivateArrayGetterConverter, // this.getConverted
+		getAndRemove: PrivateArrayGetterRemover, // this.getAndRemove
+		private __remove: PrivateArrayRemover,
+		private __replace: PrivateArrayReplacer,
+		private __insert: PrivateArrayInserter,
+		private __sort: PrivateArraySorter,
+		private __filter: PrivateArrayFilter,
 		methodGenerator: MethodGenerator,
 		// ... end injected dependencies
 
@@ -81,10 +81,9 @@ export class ArrayEditor extends ClosedArrayContentGetterConverterRemover {
 
 
 	// The method called inside each method created by methodGenerator:
-	private _doAction_updateData_and_returnThis(obj: IClosedArrayContainer, action, actionArgs) {
+	private _doAction_updateData_and_returnThis(obj: IPrivateArrayContainer, action, actionArgs) {
 		return this.runMethod_and_returnThis(obj, action, actionArgs, () => {
 			this._array.data = obj.export();
-			obj.empty();
 		});
 	}
 
@@ -96,9 +95,9 @@ ObjectFactory.register(
 	{
 		class: ArrayEditor,
 		dependencies: [
-			ClosedArrayContent, ClosedArrayItemGetter, ClosedArrayGetterConverter,
-			ClosedArrayItemGetterRemover, ClosedArrayItemRemover, ClosedArrayItemReplacer,
-			ClosedArrayItemInserter, ClosedArraySorter, ClosedArrayFilter, MethodGenerator
+			PrivateArrayContent, PrivateArrayGetter, PrivateArrayGetterConverter,
+			PrivateArrayGetterRemover, PrivateArrayRemover, PrivateArrayReplacer,
+			PrivateArrayInserter, PrivateArraySorter, PrivateArrayFilter, MethodGenerator
 		]
 	}
 );

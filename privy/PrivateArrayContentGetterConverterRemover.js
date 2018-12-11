@@ -14,11 +14,11 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 var ObjectFactory_1 = require("@writetome51/object-factory/ObjectFactory");
-var ClosedArrayContent_1 = require("./ClosedArrayContent");
-var ClosedArrayItemGetter_1 = require("./ClosedArrayItemGetter");
-var ClosedArrayContainer_1 = require("./ClosedArrayContainer");
-var ClosedArrayGetterConverter_1 = require("./ClosedArrayGetterConverter");
-var ClosedArrayItemGetterRemover_1 = require("./ClosedArrayItemGetterRemover");
+var PrivateArrayContent_1 = require("./PrivateArrayContent");
+var PrivateArrayGetter_1 = require("./PrivateArrayGetter");
+var PrivateArrayContainer_1 = require("./PrivateArrayContainer");
+var PrivateArrayGetterConverter_1 = require("./PrivateArrayGetterConverter");
+var PrivateArrayGetterRemover_1 = require("./PrivateArrayGetterRemover");
 /**********
 This class has these properties:
     this.content, this.get, this.getConverted, this.getAndRemove .
@@ -27,13 +27,13 @@ This class has these properties:
  this.content.length, this.get.adjacentItems(), this.getConverted.toOne(),
  this.getAndRemove.item(), and so forth.
  ***********/
-var ClosedArrayContentGetterConverterRemover = /** @class */ (function (_super) {
-    __extends(ClosedArrayContentGetterConverterRemover, _super);
-    // public content: ClosedArrayContent;
-    // public get: ClosedArrayItemGetter;
-    // public getConverted: ClosedArrayGetterConverter;
-    // public getAndRemove: ClosedArrayItemGetterRemover;
-    function ClosedArrayContentGetterConverterRemover(
+var PrivateArrayContentGetterConverterRemover = /** @class */ (function (_super) {
+    __extends(PrivateArrayContentGetterConverterRemover, _super);
+    // public content: PrivateArrayContent;
+    // public get: PrivateArrayGetter;
+    // public getConverted: PrivateArrayGetterConverter;
+    // public getAndRemove: PrivateArrayGetterRemover;
+    function PrivateArrayContentGetterConverterRemover(
     // begin injected dependencies...
     _content, _get, _getConverted, _getAndRemove, 
     //...end injected dependencies
@@ -56,13 +56,13 @@ var ClosedArrayContentGetterConverterRemover = /** @class */ (function (_super) 
         });
         return _this;
     }
-    return ClosedArrayContentGetterConverterRemover;
-}(ClosedArrayContainer_1.ClosedArrayContainer));
-exports.ClosedArrayContentGetterConverterRemover = ClosedArrayContentGetterConverterRemover;
+    return PrivateArrayContentGetterConverterRemover;
+}(PrivateArrayContainer_1.PrivateArrayContainer));
+exports.PrivateArrayContentGetterConverterRemover = PrivateArrayContentGetterConverterRemover;
 ObjectFactory_1.ObjectFactory.register({
-    class: ClosedArrayContentGetterConverterRemover,
+    class: PrivateArrayContentGetterConverterRemover,
     dependencies: [
-        ClosedArrayContent_1.ClosedArrayContent, ClosedArrayItemGetter_1.ClosedArrayItemGetter, ClosedArrayGetterConverter_1.ClosedArrayGetterConverter,
-        ClosedArrayItemGetterRemover_1.ClosedArrayItemGetterRemover
+        PrivateArrayContent_1.PrivateArrayContent, PrivateArrayGetter_1.PrivateArrayGetter, PrivateArrayGetterConverter_1.PrivateArrayGetterConverter,
+        PrivateArrayGetterRemover_1.PrivateArrayGetterRemover
     ]
 });

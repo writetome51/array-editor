@@ -14,9 +14,9 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 var BatchGetterSetter_1 = require("batch-getter-setter/BatchGetterSetter");
-var ClosedArrayContainer = /** @class */ (function (_super) {
-    __extends(ClosedArrayContainer, _super);
-    function ClosedArrayContainer(_array, input) {
+var PrivateArrayContainer = /** @class */ (function (_super) {
+    __extends(PrivateArrayContainer, _super);
+    function PrivateArrayContainer(_array, input) {
         if (input === void 0) { input = []; }
         var _this = _super.call(this) || this;
         _this._array = _array;
@@ -24,19 +24,18 @@ var ClosedArrayContainer = /** @class */ (function (_super) {
         return _this;
     }
     // If passing an argument to the constructor isn't possible you can use import() instead.
-    ClosedArrayContainer.prototype.import = function (array) {
-        this._set_data(array);
-        return this;
+    PrivateArrayContainer.prototype.import = function (array) {
+        return this.returnThis_after(this._set_data(array));
     };
-    ClosedArrayContainer.prototype.empty = function () {
-        this._array.data = [];
-    };
-    ClosedArrayContainer.prototype.export = function () {
+    PrivateArrayContainer.prototype.export = function () {
         return this._array.data;
     };
-    ClosedArrayContainer.prototype._set_data = function (array) {
+    PrivateArrayContainer.prototype.empty = function () {
+        setArray(this._array.data, []);
+    };
+    PrivateArrayContainer.prototype._set_data = function (array) {
         this._array.data = array;
     };
-    return ClosedArrayContainer;
+    return PrivateArrayContainer;
 }(BatchGetterSetter_1.BatchGetterSetter));
-exports.ClosedArrayContainer = ClosedArrayContainer;
+exports.PrivateArrayContainer = PrivateArrayContainer;

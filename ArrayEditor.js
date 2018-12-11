@@ -13,23 +13,21 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-var ClosedArraySorter_1 = require("./ClosedArraySorter");
-var ClosedArrayItemInserter_1 = require("./ClosedArrayItemInserter");
-var ClosedArrayItemReplacer_1 = require("./ClosedArrayItemReplacer");
-var ClosedArrayFilter_1 = require("./ClosedArrayFilter");
-var ClosedArrayContentGetterConverterRemover_1 = require("./ClosedArrayContentGetterConverterRemover");
-var ClosedArrayItemGetter_1 = require("./ClosedArrayItemGetter");
-var ClosedArrayContent_1 = require("./ClosedArrayContent");
-var ClosedArrayItemRemover_1 = require("./ClosedArrayItemRemover");
-var ClosedArrayGetterConverter_1 = require("./ClosedArrayGetterConverter");
-var ClosedArrayAppender_1 = require("./ClosedArrayAppender");
-var ClosedArrayPrepender_1 = require("./ClosedArrayPrepender");
-var ClosedArrayItemGetterRemover_1 = require("./ClosedArrayItemGetterRemover");
+var PrivateArraySorter_1 = require("./privy/PrivateArraySorter");
+var PrivateArrayInserter_1 = require("./privy/PrivateArrayInserter");
+var PrivateArrayReplacer_1 = require("./privy/PrivateArrayReplacer");
+var PrivateArrayFilter_1 = require("./privy/PrivateArrayFilter");
+var PrivateArrayContentGetterConverterRemover_1 = require("./privy/PrivateArrayContentGetterConverterRemover");
+var PrivateArrayGetter_1 = require("./privy/PrivateArrayGetter");
+var PrivateArrayContent_1 = require("./privy/PrivateArrayContent");
+var PrivateArrayRemover_1 = require("./privy/PrivateArrayRemover");
+var PrivateArrayGetterConverter_1 = require("./privy/PrivateArrayGetterConverter");
+var PrivateArrayGetterRemover_1 = require("./privy/PrivateArrayGetterRemover");
 var MethodGenerator_1 = require("method-generator/MethodGenerator");
 var ObjectFactory_1 = require("@writetome51/object-factory/ObjectFactory");
 /***********
  Behold... ArrayEditor.
- ArrayEditor combines all the other ClosedArrayContainer classes into one powerful,
+ ArrayEditor combines all the other PrivateArrayContainer classes into one powerful,
  versatile class.  This class contains methods that are defined during runtime using
  MethodGenerator.  So when you're calling these methods, a linting tool like TSLint
  will tell you these methods don't exist.  In this case, ignore TSLint.
@@ -37,7 +35,7 @@ var ObjectFactory_1 = require("@writetome51/object-factory/ObjectFactory");
  Every method generated for this class returns the class instance.  So they are all
  chainable, i.e, you can write something like:
 
- this.remove_allOf('nuts').insert_multiple(['jelly','donut'], 2).append_single('frosting').export();
+ this.remove_allOf('nuts').insert_at(2, ['jelly', 'donut']).append(['frosting']).export();
 
  ************/
 var ArrayEditor = /** @class */ (function (_super) {
@@ -48,7 +46,7 @@ var ArrayEditor = /** @class */ (function (_super) {
     get, // this.get
     getConverted, // this.getConverted
     getAndRemove, // this.getAndRemove
-    __remove, __replace, __insert, __sort, __filter, __append, __prepend, methodGenerator, 
+    __remove, __replace, __insert, __sort, __filter, methodGenerator, 
     // ... end injected dependencies
     input) {
         if (input === void 0) { 
@@ -60,12 +58,10 @@ var ArrayEditor = /** @class */ (function (_super) {
         _this.__insert = __insert;
         _this.__sort = __sort;
         _this.__filter = __filter;
-        _this.__append = __append;
-        _this.__prepend = __prepend;
         // These properties are intended to be private, hence the underscores. You're only
         // intended to access the methods generated for them.
         _this._propertiesToGenerateMethodsFor = [
-            '_remove', '_replace', '_insert', '_sort', '_filter', '_append', '_prepend'
+            '_remove', '_replace', '_insert', '_sort', '_filter'
         ];
         // create the properties:
         _this._createGetterAndOrSetterForEach(_this._propertiesToGenerateMethodsFor, {
@@ -80,23 +76,31 @@ var ArrayEditor = /** @class */ (function (_super) {
         methodGenerator.generatePublicMethodsFor(_this._propertiesToGenerateMethodsFor);
         return _this;
     }
+    Object.defineProperty(ArrayEditor.prototype, "append", {
+        get: function () { },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(ArrayEditor.prototype, "prepend", {
+        get: function () { },
+        enumerable: true,
+        configurable: true
+    });
     // The method called inside each method created by methodGenerator:
     ArrayEditor.prototype._doAction_updateData_and_returnThis = function (obj, action, actionArgs) {
         var _this = this;
         return this.runMethod_and_returnThis(obj, action, actionArgs, function () {
             _this._array.data = obj.export();
-            obj.empty();
         });
     };
     return ArrayEditor;
-}(ClosedArrayContentGetterConverterRemover_1.ClosedArrayContentGetterConverterRemover));
+}(PrivateArrayContentGetterConverterRemover_1.PrivateArrayContentGetterConverterRemover));
 exports.ArrayEditor = ArrayEditor;
 ObjectFactory_1.ObjectFactory.register({
     class: ArrayEditor,
     dependencies: [
-        ClosedArrayContent_1.ClosedArrayContent, ClosedArrayItemGetter_1.ClosedArrayItemGetter, ClosedArrayGetterConverter_1.ClosedArrayGetterConverter,
-        ClosedArrayItemGetterRemover_1.ClosedArrayItemGetterRemover, ClosedArrayItemRemover_1.ClosedArrayItemRemover, ClosedArrayItemReplacer_1.ClosedArrayItemReplacer,
-        ClosedArrayItemInserter_1.ClosedArrayItemInserter, ClosedArraySorter_1.ClosedArraySorter, ClosedArrayFilter_1.ClosedArrayFilter,
-        ClosedArrayAppender_1.ClosedArrayAppender, ClosedArrayPrepender_1.ClosedArrayPrepender, MethodGenerator_1.MethodGenerator
+        PrivateArrayContent_1.PrivateArrayContent, PrivateArrayGetter_1.PrivateArrayGetter, PrivateArrayGetterConverter_1.PrivateArrayGetterConverter,
+        PrivateArrayGetterRemover_1.PrivateArrayGetterRemover, PrivateArrayRemover_1.PrivateArrayRemover, PrivateArrayReplacer_1.PrivateArrayReplacer,
+        PrivateArrayInserter_1.PrivateArrayInserter, PrivateArraySorter_1.PrivateArraySorter, PrivateArrayFilter_1.PrivateArrayFilter, MethodGenerator_1.MethodGenerator
     ]
 });

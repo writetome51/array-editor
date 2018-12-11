@@ -13,19 +13,19 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-var OpenArrayItemGetter_1 = require("@writetome51/open-array/OpenArrayItemGetter");
-var ObjectFactory_1 = require("@writetome51/object-factory/ObjectFactory");
-var NonMethodChainableClosedArray_1 = require("./NonMethodChainableClosedArray");
-var ClosedArrayItemGetter = /** @class */ (function (_super) {
-    __extends(ClosedArrayItemGetter, _super);
-    function ClosedArrayItemGetter(_array, // injected dependency
+var public_array_content_1 = require("@writetome51/public-array-content");
+var NonMethodChainablePrivateArray_1 = require("./NonMethodChainablePrivateArray");
+// This class has the same properties and methods defined inside PublicArrayContent.
+var PrivateArrayContent = /** @class */ (function (_super) {
+    __extends(PrivateArrayContent, _super);
+    function PrivateArrayContent(_array, // injected dependency
     input) {
         if (input === void 0) { input = []; }
         var _this = _super.call(this, _array, input) || this;
         _this._array = _array;
         return _this;
     }
-    return ClosedArrayItemGetter;
-}(NonMethodChainableClosedArray_1.NonMethodChainableClosedArray));
-exports.ClosedArrayItemGetter = ClosedArrayItemGetter;
-ObjectFactory_1.ObjectFactory.register({ class: ClosedArrayItemGetter, dependencies: [OpenArrayItemGetter_1.OpenArrayItemGetter] });
+    return PrivateArrayContent;
+}(NonMethodChainablePrivateArray_1.NonMethodChainablePrivateArray));
+exports.PrivateArrayContent = PrivateArrayContent;
+ObjectFactory.register({ class: PrivateArrayContent, dependencies: [public_array_content_1.PublicArrayContent] });

@@ -13,23 +13,26 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-var ClosedArray_1 = require("./ClosedArray");
-var MethodChainableClosedArray = /** @class */ (function (_super) {
-    __extends(MethodChainableClosedArray, _super);
-    function MethodChainableClosedArray(_array, // must be subclass of it.
+var PrivateArray_1 = require("./PrivateArray");
+var MethodChainablePrivateArray = /** @class */ (function (_super) {
+    __extends(MethodChainablePrivateArray, _super);
+    function MethodChainablePrivateArray(_array, // must be subclass of it.
     input) {
         if (input === void 0) { input = []; }
-        var _this = _super.call(this, _array, input, function (property) {
-            // Return a getter function:
+        var _this = _super.call(this, _array, input, 
+        // provide a function that returns a getter function for all the methods:
+        function (method) {
+            // return a getter function:
             return function () {
-                // Return a function, turning the property into a method:
+                // Return a function that simply calls the method with same name belonging to this._array,
+                // and then returns this instance, making it chainable:
                 return function () {
                     var params = [];
                     for (var _i = 0; _i < arguments.length; _i++) {
                         params[_i] = arguments[_i];
                     }
                     var _a;
-                    (_a = _this._array)[property].apply(_a, params);
+                    (_a = _this._array)[method].apply(_a, params);
                     return _this;
                 };
             };
@@ -37,6 +40,6 @@ var MethodChainableClosedArray = /** @class */ (function (_super) {
         _this._array = _array;
         return _this;
     }
-    return MethodChainableClosedArray;
-}(ClosedArray_1.ClosedArray));
-exports.MethodChainableClosedArray = MethodChainableClosedArray;
+    return MethodChainablePrivateArray;
+}(PrivateArray_1.PrivateArray));
+exports.MethodChainablePrivateArray = MethodChainablePrivateArray;

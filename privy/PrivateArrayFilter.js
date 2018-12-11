@@ -14,18 +14,16 @@ var __extends = (this && this.__extends) || (function () {
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
 var ObjectFactory_1 = require("@writetome51/object-factory/ObjectFactory");
-var OpenArrayItemRemover_1 = require("@writetome51/open-array/OpenArrayItemRemover");
-var MethodChainableClosedArray_1 = require("./MethodChainableClosedArray");
-var ClosedArrayItemRemover = /** @class */ (function (_super) {
-    __extends(ClosedArrayItemRemover, _super);
-    function ClosedArrayItemRemover(_array, // injected dependency
+var PublicArrayFilter_1 = require("@writetome51/public-array-filter/PublicArrayFilter");
+var MethodChainablePrivateArray_1 = require("./MethodChainablePrivateArray");
+var PrivateArrayFilter = /** @class */ (function (_super) {
+    __extends(PrivateArrayFilter, _super);
+    function PrivateArrayFilter(_array, // injected dependency
     input) {
         if (input === void 0) { input = []; }
-        var _this = _super.call(this, _array, input) || this;
-        _this._array = _array;
-        return _this;
+        return _super.call(this, _array, input) || this;
     }
-    return ClosedArrayItemRemover;
-}(MethodChainableClosedArray_1.MethodChainableClosedArray));
-exports.ClosedArrayItemRemover = ClosedArrayItemRemover;
-ObjectFactory_1.ObjectFactory.register({ class: ClosedArrayItemRemover, dependencies: [OpenArrayItemRemover_1.OpenArrayItemRemover] });
+    return PrivateArrayFilter;
+}(MethodChainablePrivateArray_1.MethodChainablePrivateArray));
+exports.PrivateArrayFilter = PrivateArrayFilter;
+ObjectFactory_1.ObjectFactory.register({ class: PrivateArrayFilter, dependencies: [PublicArrayFilter_1.PublicArrayFilter] });

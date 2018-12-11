@@ -13,29 +13,24 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-var ClosedArray_1 = require("./ClosedArray");
-var NonMethodChainableClosedArray = /** @class */ (function (_super) {
-    __extends(NonMethodChainableClosedArray, _super);
-    function NonMethodChainableClosedArray(_array, // must be subclass of it.
+var PrivateArray_1 = require("./PrivateArray");
+var NonMethodChainablePrivateArray = /** @class */ (function (_super) {
+    __extends(NonMethodChainablePrivateArray, _super);
+    function NonMethodChainablePrivateArray(_array, // must be subclass of it.
     input) {
         if (input === void 0) { input = []; }
-        var _this = _super.call(this, _array, input, function (property) {
+        var _this = _super.call(this, _array, input, 
+        // provide a function that returns a getter function for all the methods:
+        function (method) {
             // Return a getter function:
             return function () {
-                // Return a function, turning the property into a method:
-                return function () {
-                    var params = [];
-                    for (var _i = 0; _i < arguments.length; _i++) {
-                        params[_i] = arguments[_i];
-                    }
-                    var _a;
-                    return (_a = _this._array)[property].apply(_a, params);
-                };
+                // Simply return the method with same name belonging to this._array:
+                return _this._array[method];
             };
         }) || this;
         _this._array = _array;
         return _this;
     }
-    return NonMethodChainableClosedArray;
-}(ClosedArray_1.ClosedArray));
-exports.NonMethodChainableClosedArray = NonMethodChainableClosedArray;
+    return NonMethodChainablePrivateArray;
+}(PrivateArray_1.PrivateArray));
+exports.NonMethodChainablePrivateArray = NonMethodChainablePrivateArray;
